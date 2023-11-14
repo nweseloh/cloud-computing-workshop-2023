@@ -1,15 +1,15 @@
 resource "azurerm_resource_group" "example" {
-  name = "example-rg-tf"
+  name = "<MY-NAME>-rg-tf"
   location = "West Europe"
 }
 
 resource "azurerm_kubernetes_cluster" "example" {
-  name                = "example-aks"
+  name                = "<MY-NAME>-aks"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
-  dns_prefix          = "example"
+  dns_prefix          = "<MY-NAME>"
   
-  node_resource_group  = "example-aks-nodes"
+  node_resource_group  = "<MY-NAME>-aks-nodes"
   
   default_node_pool {
     name       = "default"
@@ -22,14 +22,14 @@ resource "azurerm_kubernetes_cluster" "example" {
   }
 
   ingress_application_gateway {
-    gateway_name = "example-aks-appgateway"
+    gateway_name = "<MY-NAME>-aks-appgateway"
     subnet_cidr =  "10.225.0.0/16"
   }
 }
 
 
 resource "azurerm_container_registry" "example" {
-  name                = "nicoleweseloh2023"
+  name                = "<MY-REGISTRY>"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
   sku                 = "Basic"

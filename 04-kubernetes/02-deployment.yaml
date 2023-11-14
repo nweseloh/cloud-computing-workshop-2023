@@ -1,21 +1,21 @@
 apiVersion: "apps/v1"
 kind: Deployment
 metadata:
-  name: nicole-deployment
-  namespace: nicole
+  name: webapp-deployment
+  namespace: web
   labels:
-    app: nicole
+    app: webapp
 spec:
   selector:
     matchLabels:
-      app: nicole
+      app: webapp
   template:
     metadata: 
       labels:
-        app: nicole
+        app: webapp
     spec:
       containers:
-      - name: nicole-pod
-        image: nicoleweseloh2023.azurecr.io/my-image
+      - name: webapp
+        image: <MY-REGISTRY>.azurecr.io/webapp
         ports:
         - containerPort: 80
